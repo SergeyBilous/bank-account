@@ -1,11 +1,14 @@
+import java.sql.DriverManager
 buildscript {
     repositories {
         mavenLocal()
         jcenter()
         mavenCentral()
+         
     }
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE"
+     
     }
 }
 
@@ -17,17 +20,20 @@ apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'application'
 mainClassName = 'tryout.middle.Application'
-
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    flatDir(dir: 'libs', name: 'Local libs')
 }
 
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-web"
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile "postgresql:postgresql:42.0.0"
     compileOnly "org.projectlombok:lombok:1.16.10"
+    
     testCompile "org.springframework.boot:spring-boot-starter-test"
+      
 }

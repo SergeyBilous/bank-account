@@ -52,4 +52,15 @@ public class CreditBankAccount extends BankAccount {
         super.setIsDebt("N");
     }
 
+    @Override
+    public void accept(Visitor v) {
+        v.visit(this);
+    }
+
+    @Override
+    public void info(Visitor v) {
+        v.info(this);
+    }
+    
+
 }

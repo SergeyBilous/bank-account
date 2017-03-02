@@ -24,7 +24,7 @@ import javax.persistence.Table;
 @DiscriminatorColumn(name = "is_debt", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("A")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class BankAccount implements IBankAccount, Serializable, Cloneable {
+public abstract class BankAccount implements IBankAccount, Serializable, Cloneable,Visitable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

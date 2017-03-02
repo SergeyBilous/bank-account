@@ -36,4 +36,14 @@ public class DebitBankAccount extends BankAccount {
     public final void setIsDebt(String val) throws Throwable {
         super.setIsDebt("Y");
     }
+
+    @Override
+    public void accept(Visitor v) {
+        v.visit(this);
+    }
+
+    @Override
+    public void info(Visitor v) {
+       v.info(this);
+    }
 }

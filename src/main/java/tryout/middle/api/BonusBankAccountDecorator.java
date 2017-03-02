@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import tryout.middle.domain.BankAccount;
 import tryout.middle.domain.CreditBankAccount;
 import tryout.middle.domain.DebitBankAccount;
+import tryout.middle.domain.Visitor;
 
 public class BonusBankAccountDecorator extends BankAccountDecorator {
 
@@ -40,6 +41,16 @@ public class BonusBankAccountDecorator extends BankAccountDecorator {
         } else {
             ((DebitBankAccount) account).debit(sum);
         }
+    }
+
+    @Override
+    public void accept(Visitor v) {
+        return;
+    }
+
+    @Override
+    public void info(Visitor v) {
+        
     }
 
 }

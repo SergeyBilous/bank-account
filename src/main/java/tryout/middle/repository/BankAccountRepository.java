@@ -11,4 +11,5 @@ public interface BankAccountRepository extends JpaRepository<BankAccount, Long> 
 
     @Query(value = "select b from BankAccount b", nativeQuery = false)
     public List<BankAccount> getAllAccounts();
+
 }

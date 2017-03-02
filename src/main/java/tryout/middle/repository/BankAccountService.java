@@ -7,9 +7,11 @@ package tryout.middle.repository;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import static tryout.middle.Application.ctx;
 import tryout.middle.domain.BankAccount;
 
 /**
@@ -19,9 +21,16 @@ import tryout.middle.domain.BankAccount;
 @Service
 @Repository
 public class BankAccountService {
+    
+    BankAccountRepository ba;
+    
+    public BankAccountService() {
+        
+    }
 
-    @Autowired
-    private BankAccountRepository ba;
+    public BankAccountService(ConfigurableApplicationContext context) {
+        ba = context.getBean(BankAccountRepository.class);
+    }
 
     @Transactional(readOnly = true)
     public List<BankAccount> getAll() {

@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,10 +20,11 @@ import javax.persistence.Table;
 
 @Data
 @Entity(name = "BankAccount")
-@Table(name="bankaccount",schema = "public")
+@Table(name = "bankaccount", schema = "public")
 @DiscriminatorColumn(name = "is_debt", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorValue("A")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class BankAccount implements IBankAccount,Serializable {
+public abstract class BankAccount implements IBankAccount, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,9 +34,25 @@ public abstract class BankAccount implements IBankAccount,Serializable {
     private Date open;
     private Date close;
     private Date end;
+    private BigDecimal bonus;
+    private String isDebt;
+
+    public BankAccount() {
+        isDebt = "A";
+        amount=BigDecimal.ZERO;
+        bonus=BigDecimal.ZERO;
+    }
 
     protected final void operate(BigDecimal sum) {
         amount = amount.add(sum);
+    }
+
+    public void setIsDebt(String isDebt) throws Throwable {
+        if (isDebt.equals("A") || isDebt.equals("Y") || isDebt.equals("N")) {
+            this.isDebt = isDebt;
+        } else {
+            throw new Throwable("Неизвестный тип счета");
+        }
     }
 
     public abstract boolean isValidAmmount(BigDecimal sum);
@@ -42,4 +60,5 @@ public abstract class BankAccount implements IBankAccount,Serializable {
     public static boolean isValidSum(BigDecimal sum) {
         return sum.signum() == -1;
     }
+
 }

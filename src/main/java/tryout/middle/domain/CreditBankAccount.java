@@ -4,9 +4,14 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import org.hibernate.annotations.DiscriminatorFormula;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity(name="CreditBankAccount")
+@DiscriminatorValue("N")
 public class CreditBankAccount extends BankAccount{
 
     private BigDecimal minAmount;

@@ -1,6 +1,10 @@
 package tryout.middle.domain;
 
 import java.math.BigDecimal;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+@Entity(name="DebitBankAccount")
+@DiscriminatorValue("Y")
 
 public class DebitBankAccount extends BankAccount {
 

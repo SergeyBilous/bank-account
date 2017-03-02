@@ -10,8 +10,7 @@ package tryout.middle.domain;
  * @author serge
  */
 public interface Visitor {
-    void visit(DebitBankAccount ac);
-    void visit(CreditBankAccount ac);
-    void info(DebitBankAccount ac);
-    void info(CreditBankAccount ac);
+    abstract void visit(DebitBankAccount ac);
+    abstract void visit(CreditBankAccount ac);
+    
 }

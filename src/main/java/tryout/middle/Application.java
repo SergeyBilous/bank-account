@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import tryout.middle.api.AccountInfo;
 
 import tryout.middle.api.BonusBankAccountDecorator;
 import tryout.middle.api.Capitalise;
@@ -83,7 +84,7 @@ public class Application {
             ls = br.findAll();
             for (BankAccount cur : ls) {
                 System.out.print(cur.getNum() + "\t\t");
-                cur.info(new Capitalise());
+                cur.accept(new AccountInfo());
 
             }
         }

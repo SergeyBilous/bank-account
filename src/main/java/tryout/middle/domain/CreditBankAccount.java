@@ -57,10 +57,7 @@ public class CreditBankAccount extends BankAccount {
         v.visit(this);
     }
 
-    @Override
-    public void info(Visitor v) {
-        v.info(this);
-    }
+    
     
 
 }

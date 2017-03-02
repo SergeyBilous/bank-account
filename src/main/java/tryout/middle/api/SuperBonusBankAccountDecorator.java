@@ -38,9 +38,5 @@ public class SuperBonusBankAccountDecorator extends BankAccountDecorator {
         return;
     }
 
-    @Override
-    public void info(Visitor v) {
-       
-    }
-    
+   
 }

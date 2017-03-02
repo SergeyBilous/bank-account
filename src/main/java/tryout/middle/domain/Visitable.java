@@ -11,5 +11,5 @@ package tryout.middle.domain;
  */
 public interface Visitable {
     void accept(Visitor v); 
-    void info(Visitor v);
+    
 }

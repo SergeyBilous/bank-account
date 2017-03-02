@@ -18,15 +18,7 @@ public class Capitalise implements Visitor{
         ac.credit(BigDecimal.valueOf(10d));
     }
 
-    @Override
-    public void info(DebitBankAccount ac) {
-         System.out.println("Debit acc info " + ac.getAmount().toString());
-    }
-
-    @Override
-    public void info(CreditBankAccount ac) {
-        System.out.println("Credit acc info " + ac.getMinAmount().toString());
-    }
+    
 
     
 }

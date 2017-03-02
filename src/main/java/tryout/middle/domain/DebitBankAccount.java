@@ -42,8 +42,5 @@ public class DebitBankAccount extends BankAccount {
         v.visit(this);
     }
 
-    @Override
-    public void info(Visitor v) {
-       v.info(this);
-    }
+   
 }

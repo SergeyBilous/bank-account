@@ -24,6 +24,14 @@ public class AccountInfo {
     }
 
     public void info(BankAccount acc) {
+        if (acc instanceof DebitBankAccount) {
+            info((DebitBankAccount) acc);
+            return;
+        }
+        if (acc instanceof CreditBankAccount) {
+            info((CreditBankAccount) acc);
+            return;
+        }
         System.out.println("Acc num " + acc.getNum());
     }
 }

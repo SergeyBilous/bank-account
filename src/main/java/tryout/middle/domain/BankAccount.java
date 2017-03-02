@@ -24,7 +24,7 @@ import javax.persistence.Table;
 @DiscriminatorColumn(name = "is_debt", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("A")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class BankAccount implements IBankAccount, Serializable {
+public abstract class BankAccount implements IBankAccount, Serializable, Cloneable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,14 +33,14 @@ public abstract class BankAccount implements IBankAccount, Serializable {
     private BigDecimal amount;
     private Date open;
     private Date close;
-    private Date end;
+    private Date enddate;
     private BigDecimal bonus;
     private String isDebt;
 
     public BankAccount() {
         isDebt = "A";
-        amount=BigDecimal.ZERO;
-        bonus=BigDecimal.ZERO;
+        amount = BigDecimal.ZERO;
+        bonus = BigDecimal.ZERO;
     }
 
     protected final void operate(BigDecimal sum) {
@@ -61,4 +61,12 @@ public abstract class BankAccount implements IBankAccount, Serializable {
         return sum.signum() == -1;
     }
 
+    @Override
+    public BankAccount clone() throws CloneNotSupportedException {
+        BankAccount ret = (BankAccount) super.clone();
+        ret.id = null;
+        ret.num = "";
+        ret.open = new Date();
+        return ret;
+    }
 }
